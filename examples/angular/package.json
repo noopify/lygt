@@ -1,0 +1,20 @@
+{
+  "name": "angular-demo",
+  "description": "Angular app with lygt.",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "npm i && ./node_modules/.bin/gulp",
+    "release": "./node_modules/.bin/gulp build --RELEASE"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "browserify-ngannotate": "^1.0.1",
+    "gulp": "^3.9.0",
+    "lygt": "0.0.1"
+  },
+  "dependencies": {
+    "angular": "^1.4.4",
+    "angular-ui-router": "^0.2.15"
+  }
+}

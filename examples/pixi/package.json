@@ -1,0 +1,17 @@
+{
+  "name": "pixi-demo",
+  "version": "0.0.0",
+  "description": "Pixi project with lygt.",
+  "private": true,
+  "scripts": {
+    "start": "npm i && ./node_modules/.bin/gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pixi.js": "^3.0.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "lygt": "0.0.1"
+  }
+}

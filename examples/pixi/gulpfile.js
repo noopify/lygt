@@ -1,37 +1,33 @@
 var gulp = require('gulp');
-var lygt = require('../src').use(gulp);
+var lygt = require('lygt').use(gulp);
 var tasks = lygt.tasks;
 
 tasks.clear({
-
+  as: 'clean'
 });
+
+tasks.copy();
 
 tasks.html({
-
-});
-
-tasks.scss({
-
+  as: 'index'
 });
 
 tasks.browserify({
-  transforms: [
-    lygt.transforms.html()
-  ]
+  as: 'scripts',
+  from: './src/index.js'
 });
 
 tasks.serve({
-
+  as: 'serve'
 });
 
 gulp.task('watch', function () {
-  lygt.watch('browserify');
-  lygt.watch('html');
-  lygt.watch('scss');
+  lygt.watch('scripts');
+  lygt.watch('copy');
 });
 
 gulp.task('build', function (next) {
-  lygt.run('clear', ['browserify', 'html', 'scss'], next);
+  lygt.run('clean', ['scripts', 'index', 'copy'], next);
 });
 
 gulp.task('default', function (next) {
