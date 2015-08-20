@@ -1,0 +1,12 @@
+.btn {
+  color: black;
+  box-shadow: 0 0 3px black;
+  border-radius: 1px;
+}
+
+body {
+  /* @if DEBUG == true */
+  background-color: silver;
+  /* @endif */
+}
+
