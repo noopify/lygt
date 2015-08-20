@@ -36,7 +36,7 @@ function init(gulp) {
     gulp.tasks[opts.as].browserSync = browserSync;
 
     return task;
-  }
+  };
 }
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

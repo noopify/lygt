@@ -86,7 +86,7 @@ function init(gulp) {
     gulp.tasks[opts.as].opts = opts;
 
     return task;
-  }
+  };
 }
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

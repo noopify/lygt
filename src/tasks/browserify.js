@@ -92,7 +92,7 @@ function init(gulp) {
     gulp.tasks[opts.as].browserify = stream;
 
     return task;
-  }
+  };
 }
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

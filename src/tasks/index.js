@@ -26,6 +26,6 @@ module.exports = {
       html: html.init(gulp),
       serve: serve.init(gulp),
       scss: scss.init(gulp)
-    }
+    };
   }
 };
