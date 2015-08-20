@@ -2,11 +2,6 @@ var gulp = require('gulp');
 var lygt = require('../src').use(gulp);
 var tasks = lygt.tasks;
 
-var data = {
-  KEY: Date.now(),
-  DEBUG: false
-};
-
 tasks.clear({
 
 });
@@ -21,8 +16,6 @@ tasks.scss({
 
 tasks.browserify({
   transforms: [
-    lygt.transforms.preprocess(data),
-    lygt.transforms.inject(data),
     lygt.transforms.html()
   ]
 });
