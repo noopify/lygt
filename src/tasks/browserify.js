@@ -17,12 +17,11 @@ var defaultOptions = {
   as: 'browserify',
   minify: false,
   sourcemaps: true,
-  lint: true,
   from: './src/scripts/index.js',
   to: './dist',
   output: 'app.js',
   transforms: [],
-  before: noop(),
+  before: null,
   plugins: {
     browserify: {
       entries: ['./src/scripts/index.js'],
@@ -44,9 +43,6 @@ var defaultOptions = {
 // - PRIVATE
 //
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-function noop() {
-}
 
 function onError(err) {
   gutil.log('[BROWSERIFY]', err.stack || err);

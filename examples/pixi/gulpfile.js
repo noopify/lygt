@@ -3,10 +3,14 @@ var lygt = require('lygt').use(gulp);
 var tasks = lygt.tasks;
 
 tasks.clear({
-  as: 'clean'
+  as: 'clean',
+  from: './dist'
 });
 
-tasks.copy();
+tasks.copy({
+  from: './assets/**/*',
+  to: './dist'
+});
 
 tasks.html({
   as: 'index'

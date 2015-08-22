@@ -19,7 +19,6 @@ var defaultOptions = {
   minify: false,
   sourcemaps: true,
   autoprefixer: true,
-  lint: false,
   from: './src/styles/index.scss',
   to: './dist',
   output: 'app.scss',

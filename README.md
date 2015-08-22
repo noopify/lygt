@@ -6,14 +6,18 @@ Only for browserify, scss.
 ```javascript
 var gulp = require('gulp');
 var lygt = require('lygt').use(gulp);
+var tasks = lygt.tasks;
 
-lygt.browserify({ // Create task 'scripts'
-  as: 'scripts',
+tasks.browserify({ // Create task `browserify`
   from: './src/index.js',
-  to: './build'
+  to: './dist'
 });
 
-lygt.watch('scripts'); // Enable watchify
+gulp.task('watch', function() {
+  lygt.watch('browserify'); // Enable watchify
+});
+
+gulp.task('default', ['browserify', 'watch']);
 ```
 
 See `examples/` for more details.
