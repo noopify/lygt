@@ -20,6 +20,9 @@ var seq = require('run-sequence'),
 module.exports = {
   use: function (gulp) {
     return {
+      add: function (plugin) {
+        plugin.use(gulp, this);
+      },
       util: util,
       env: util.env,
       merge: lodash.merge,

@@ -1,12 +1,10 @@
 {
-  "name": "pixi-demo",
+  "name": "demo-react",
   "version": "0.0.0",
-  "description": "Pixi project with lygt.",
   "private": true,
   "scripts": {
     "start": "npm i && ./node_modules/.bin/gulp"
   },
-  "license": "MIT",
   "dependencies": {
     "react": "^0.13.3"
   },

@@ -1,7 +1,15 @@
-# ly GulpTasks
-### Collection of GulpTasks. (2015-08)
+### Collection of GulpTasks for browserify project.
 
-Only for browserify, scss.
+Provides commons gulp tasks:
+
+- browserify
+- clear
+- copy
+- html
+- scss
+- serve
+
+With `watch` support.
 
 ```javascript
 var gulp = require('gulp');
