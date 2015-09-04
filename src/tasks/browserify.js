@@ -40,16 +40,6 @@ var defaultOptions = {
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //
-// - PRIVATE
-//
-//= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-function onError(err) {
-  gutil.log('[BROWSERIFY]', err.stack || err);
-}
-
-//= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-//
 // - PUBLIC
 //
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -74,7 +64,7 @@ function init(gulp) {
 
     var task = gulp.task(opts.as, function () {
       return stream.bundle()
-        .on('error', onError)
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source(opts.output))
         .pipe(buffer())
         .pipe(gif(opts.sourcemaps, sourcemaps.init(opts.plugins.sourcemaps.init)))
