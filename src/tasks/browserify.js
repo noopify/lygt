@@ -46,7 +46,6 @@ var defaultOptions = {
 
 function onError(err) {
   gutil.log('[BROWSERIFY]', err.stack || err);
-  this.emit('end');
 }
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
