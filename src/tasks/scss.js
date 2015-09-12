@@ -23,7 +23,7 @@ var defaultOptions = {
   to: './dist',
   output: 'app.scss',
   watch: './src/styles/**/*.scss',
-  preprocess: {},
+  preprocess: false,
   plugins: {
     sass: {
       includePaths: './src'
@@ -62,17 +62,17 @@ function findReloadTask(gulp) {
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 function init(gulp) {
-  return function (opts) {
+  return function(opts) {
     opts = _.merge(defaultOptions, opts);
     opts.plugins.sourcemaps.write.sourceRoot = path.dirname(opts.from).replace('.', '');
 
-    var task = gulp.task(opts.as, function () {
+    var task = gulp.task(opts.as, function() {
       var bs = findReloadTask(gulp);
 
       return gulp.src(opts.from)
         .pipe(gif(opts.sourcemaps, sourcemaps.init(opts.plugins.sourcemaps.init)))
         .pipe(sass(opts.plugins.sass).on('error', sass.logError))
-        .pipe(preprocess({context: opts.preprocess}))
+        .pipe(gif(opts.preprocess, preprocess({context: opts.preprocess})))
         .pipe(rename(opts.output))
         .pipe(gif(opts.autoprefixer, autoprefixer(opts.plugins.autoprefixer)))
         .pipe(gif(opts.minify, minify(opts.plugins.minify)))
