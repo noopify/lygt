@@ -15,7 +15,7 @@
   "devDependencies": {
     "browserify-ngannotate": "^1.0.1",
     "gulp": "^3.9.0",
-    "lygt": "^0.0.7",
+    "lygt": "^0.0.8",
     "preprocessify": "^0.0.6",
     "stringify": "^3.1.0"
   }

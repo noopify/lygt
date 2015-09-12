@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "lygt": "0.0.1"
+    "lygt": "^0.0.8"
   }
 }
