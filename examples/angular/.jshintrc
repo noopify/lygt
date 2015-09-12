@@ -1,0 +1,14 @@
+{
+  "browser": true,
+  "node": true,
+  "bitwise": true,
+  "undef": true,
+  "eqeqeq": true,
+  "noarg": true,
+  "unused": true,
+  "mocha": true,
+  "jasmine": true,
+  "globals": {
+    "angular": true
+  }
+}

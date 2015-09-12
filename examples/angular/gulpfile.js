@@ -1,58 +1,95 @@
+/**
+ * ===============
+ * G U L P F I L E
+ * ===============
+ * ```
+ * gulp <task> --<key>=<value>
+ * ```
+ */
+
+/**
+ * Dependencies.
+ */
+
 var gulp = require('gulp');
 var lygt = require('lygt').use(gulp);
-var config = require('./config/env');
-var ngAnnotate = require('browserify-ngannotate');
 var tasks = lygt.tasks;
 
+/**
+ * Build configurations.
+ */
+
 var data = {
-  now: Date.now(),
-  config: lygt.merge(lygt.env, config)
+  BUILD: Date.now(),
+  // Merge env variables with config variables.
+  CONFIG: lygt.merge(require('./config/env.js'), lygt.env)
 };
 
+/**
+ * Tasks.
+ */
+
 tasks.clear({
-  as: 'clean'
+  as: 'clean',
+  to: './dist'
+});
+
+tasks.copy({
+  as: 'assets',
+  from: './assets/**/*',
+  to: './dist'
 });
 
 tasks.html({
   as: 'index',
+  from: './src/index.html',
+  to: './dist',
   preprocess: data
 });
 
 tasks.scss({
   as: 'styles',
-  minify: data.config.RELEASE,
-  output: data.now + '.css',
-  preprocess: data,
-  sourcemaps: !data.config.RELEASE
+  from: './src/styles/index.scss',
+  to: './dist/build',
+  minify: data.CONFIG.RELEASE,
+  output: data.BUILD + '.css',
+  sourcemaps: !data.CONFIG.RELEASE
 });
 
 tasks.browserify({
   as: 'scripts',
-  minify: data.config.RELEASE,
-  output: data.now + '.js',
-  sourcemaps: !data.config.RELEASE,
+  from: './src/scripts/index.js',
+  to: './dist/build',
+  minify: data.CONFIG.RELEASE,
+  output: data.BUILD + '.js',
+  sourcemaps: !data.CONFIG.RELEASE,
   transforms: [
-    lygt.transforms.preprocess(data),
-    lygt.transforms.inject({config: data.config}),
-    lygt.transforms.html(),
-    ngAnnotate
-  ]
+    [require('stringify')],
+    [require('preprocessify')(data.CONFIG, {includeExtensions: '.js', type: 'js'})],
+    [require('preprocessify')(data.CONFIG, {includeExtensions: '.html', type: 'html'})],
+    [require('browserify-ngannotate')]
+  ],
+  before: function(b) {
+    b.require(lygt.write('./config/local.json', data.CONFIG), {expose: 'config'});
+  }
 });
 
 tasks.serve({
-  as: 'serve'
+  as: 'serve',
+  from: './dist'
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   lygt.watch('scripts');
+  lygt.watch('assets');
   lygt.watch('index');
   lygt.watch('styles');
 });
 
-gulp.task('build', function (next) {
-  lygt.run('clean', ['scripts', 'index', 'styles'], next);
+gulp.task('build', function(next) {
+  lygt.run('clean', ['scripts', 'index', 'styles', 'assets'], next);
 });
 
-gulp.task('default', function (next) {
+gulp.task('default', function(next) {
   lygt.run(['build', 'watch'], 'serve', next);
 });

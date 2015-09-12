@@ -1,5 +1,11 @@
-require('angular')
-  .module('demo', [
+/**
+ * Entry.
+ */
+module.exports = require('angular')
+  .module('root', [
+    // Dependencies
     require('angular-ui-router'),
-    require('./home')
+    // Application
+    require('./app'),
+    require('./components')
   ]);

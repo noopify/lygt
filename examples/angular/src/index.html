@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html ng-app="demo">
+<html ng-app="root">
+
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link type="text/css" rel="stylesheet" href="<!-- @echo now -->.css">
+  <meta charset="UTF-8">
+  <meta name="description" content="No description yet.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application</title>
+  <link type="image/png" rel="icon" href="favicon.png"/>
+  <link type="text/css" rel="stylesheet" href="build/<!-- @echo BUILD -->.css">
 </head>
-<body >
-<div ui-view></div>
-<script type="application/javascript" src="<!-- @echo now -->.js"></script>
+
+<body>
+<ui-view name="main"></ui-view>
+<script type="application/javascript" src="build/<!-- @echo BUILD -->.js"></script>
 </body>
+
 </html>

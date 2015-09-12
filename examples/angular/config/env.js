@@ -1,5 +1,7 @@
 module.exports = {
 
-    DEFAULT_NAME: 'World'
+  RELEASE: false,
+
+  BASE_URL: 'http://localhost'
 
 };
