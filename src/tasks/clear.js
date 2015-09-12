@@ -9,7 +9,8 @@ var _ = require('lodash'),
 
 var defaultOptions = {
   as: 'clear',
-  from: './dist'
+  from: './dist',
+  del: {}
 };
 
 //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -23,7 +24,7 @@ function init(gulp) {
     opts = _.merge(defaultOptions, opts);
 
     var task = gulp.task(opts.as, function () {
-      return del.sync(opts.from);
+      return del.sync(opts.from, opts.del);
     });
 
     gulp.tasks[opts.as].opts = opts;
