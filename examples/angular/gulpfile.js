@@ -31,7 +31,7 @@ var data = {
 
 tasks.clear({
   as: 'clean',
-  to: './dist'
+  from: './dist'
 });
 
 tasks.copy({
