@@ -1,6 +1,6 @@
 {
   "name": "lygt",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Collection of gulp tasks.",
   "main": "src/index.js",
   "repository": {

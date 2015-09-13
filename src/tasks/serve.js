@@ -24,6 +24,10 @@ function init(gulp) {
   return function (opts) {
     opts = _.merge(defaultOptions, opts);
 
+    if (opts.proxy) {
+      delete opts.server;
+    }
+
     gulp.task(opts.as + '-reload', function () {
       return browserSync.reload();
     });
